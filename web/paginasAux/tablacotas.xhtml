@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+            <title>Mostrar números pares entre cotas</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            <p:panel header="Numeros Entre Cota Superior e Inferior" >
+                <p:messages id="msgError" showDetail="true"/>
+                <h:panelGrid columns="2" cellpadding="5" cellspacing="5">
+                    <p:outputLabel value="Ingrese cota Inferior:"/>
+                    <p:inputNumber value="#{celularFormBean.valor1}" decimalPlaces="0" >
+                        <f:converter converterId="javax.faces.Integer"/>
+                    </p:inputNumber>    
+                    <p:outputLabel value="Ingrese cota Superior:"/>
+                    <p:inputNumber value="#{celularFormBean.valor2}" decimalPlaces="0"  >
+                        <f:converter converterId="javax.faces.Integer"/>
+                        
+                    </p:inputNumber>   
+                    <li><a href="#{request.contextPath}">Volver al Menú principal</a></li>
+                </h:panelGrid>
+                
+                <p:commandButton value="Mostrar valores" update="dtvalores,msgError" actionListener="#{celularFormBean.validarCotas(fc, uic, obj)}" onclick="PF('msgError').show"/>
+                
+                <p:dataScroller id="dtvalores" value="#{celularFormBean.obtenerNumerosCotas()}" var="rango"   >
+                    <f:facet name="header">
+                        Lista de numeros pares entre #{celularFormBean.valor1} y #{celularFormBean.valor2}
+                    </f:facet>
+                    <p:panel >
+                        <p:outputLabel value="#{rango}"  />
+                    </p:panel>
+                        
+                                     
+                </p:dataScroller>
+                
+            </p:panel>
+            
+        </h:form>
+
+            
+    </h:body>
+</html>
+

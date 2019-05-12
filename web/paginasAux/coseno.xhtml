@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Calculo de Coseno</title>
+        
+    </h:head>
+    <h:body>
+        <h:form>
+            <h:panelGrid columns="2" cellpadding="5" cellspacing="5">
+                <p:outputLabel value="Ingrese numero para calcular el coseno:"/>
+                <p:inputNumber value="#{celularFormBean.valor3}" minValue="0.00" maxValue="360.00"/>
+                <p:commandButton value="Calcular Coseno" update="Resultado" onclick="PF('Coseno').show();"/>
+                <p:dialog id="dlgCoseno" header="Calculo realizado" widgetVar="Coseno" minHeight="100"  onHide="explode">
+                    <p:outputLabel id="Resultado" value="Coseno = #{celularFormBean.obtenerCosenoNumero()}"/>
+                </p:dialog>                    
+            </h:panelGrid>
+            <h:panelGrid>
+                <li><a href="#{request.contextPath}">Volver al Menú principal</a></li>
+            </h:panelGrid>
+            
+        </h:form>
+    </h:body>
+</html>
+

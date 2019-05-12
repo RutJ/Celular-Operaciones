@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Tabla de Multiplicar de un número</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            <p:panel  header="Tabla de Multiplicar">
+                <p:outputLabel value="Ingrese numero para calcular su tabla:"/>
+                <p:inputNumber value="#{celularFormBean.valor1}" decimalPlaces="0" />
+                <p:commandButton value="Mostrar Tabla"  update="tblMultiplicar" />
+                <li><a href="#{request.contextPath}">Volver al Menú principal</a></li>
+                <p:dataTable id="tblMultiplicar"  value="#{celularFormBean.obtenerTablaDeMultiplicacion()}" var="multi" >
+                    <p:column style="width: 20px" >
+                        <p:outputLabel value="#{multi.multiplicando}" />
+                    </p:column>
+                    <p:column style="width: 20px">
+                        <p:outputLabel value="x" />
+                    </p:column>
+                    <p:column style="width: 20px">
+                        <p:outputLabel value="#{multi.multiplicador}" />                                    
+                    </p:column>
+                    <p:column style="width: 20px">
+                        <p:outputLabel value="=" />
+                    </p:column>
+                    <p:column >
+                        <p:outputLabel value="#{multi.resultado}" />
+                    </p:column>
+                </p:dataTable>
+            </p:panel>
+        </h:form>
+           
+            
+    </h:body>
+</html>
+
